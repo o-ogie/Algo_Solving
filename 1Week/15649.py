@@ -10,7 +10,6 @@ def paper(y, x, N):
     for i in range(y, y+N):
         if pivot^1 in arr[i][x:x+N]:
             allPass = False
-
     if allPass:
         color[arr[y][x]]+= 1
         return
