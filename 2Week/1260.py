@@ -19,21 +19,36 @@ for _ in range(1,M+1):
 graph = [sorted(row) for row in graph]
 
 # print(graph)
+# def DFS(start):
+#     stack=[start]
+#     visited = set()
+#     result = []
+#     while stack:
+#         value = stack.pop()
+#         if value in visited:
+#             continue
+#         result.append(value)
+#         visited.add(value)
+#         for neighbor in sorted(graph[value], reverse=True):  # graph[value] 
+#             if not neighbor in visited:
+#                 stack.append(neighbor)
+#     print(" ".join(map(str,result)))
 def DFS(start):
-    stack=[start]
+    stack = [start]
     visited = set()
+    visited.add(start)
     result = []
     while stack:
         value = stack.pop()
-        if value in visited:
-            continue
         result.append(value)
-        visited.add(value)
-        for neighbor in sorted(graph[value], reverse=True):  # graph[value] 
-            if not neighbor in visited:
+        for neighbor in sorted(graph[value], reverse=True):
+            if neighbor not in visited:
                 stack.append(neighbor)
-    print(" ".join(map(str,result)))
+                visited.add(neighbor)
+    print(*result)
 
+# stack=[]
+# visited=[False]*(N+1)
 stack=[]
 visited=[False]*(N+1)
 

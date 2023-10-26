@@ -111,3 +111,45 @@ def bfs(graph, start):
                 que.put(neighbor)
                 visited[neighbor] = True
 
+graph = {
+    1: [2, 3, 4],
+    2: [1, 4],
+    3: [1, 4, 5],
+    4: [1, 2, 3, 5],
+    5: [3, 4]
+}
+
+def DFS(start):
+    stack=[start]
+    visited=[]
+
+    while stack:
+        value=stack.pop()
+
+        if value in visited:
+            continue
+        visited.append(value)
+
+        for node in sorted(graph[value],reverse=True):
+            if node not in visited:
+                stack.append(node)
+
+    print(*visited)
+
+def BFS(start):
+    que=deque([start])
+    visited=set()
+
+    while que:
+        value = que.popleft()
+        # if value in visited:
+        #     continue
+
+        for node in graph[value]:
+            if node not in visited:
+                que.append(node)
+                visited.add(node)
+    print(*visited)
+
+DFS(1)
+BFS(1)
